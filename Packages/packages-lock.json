@@ -71,7 +71,10 @@
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3d02f0d98bac6ba52186040a2c40a0fe7e749e4e
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
@@ -81,7 +84,10 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
 >>>>>>> navigation
+=======
+>>>>>>> 3d02f0d98bac6ba52186040a2c40a0fe7e749e4e
     "com.unity.burst": {
       "version": "1.8.12",
       "depth": 2,
