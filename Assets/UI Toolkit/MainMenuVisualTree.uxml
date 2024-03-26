@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=3d7a1f37f19f26945a58de621e114ecc&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(253, 245, 230, 0);">
+        <ui:Label tabindex="-1" text="Fawakeh" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Header" enable-rich-text="true" class="header" />
+        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartGameBtn" class="primaryBtn" />
+        <ui:Button text="Leaderboard" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LeaderboardBtn" class="secondaryBtn" />
+        <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsBtn" style="font-size: 48px;" />
+        <ui:Button text="How To Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HowToPlayBtn" class="secondaryBtn" />
+    </ui:VisualElement>
+</ui:UXML>
