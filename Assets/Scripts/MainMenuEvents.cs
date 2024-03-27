@@ -7,40 +7,86 @@ public class MainMenuEvents : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
 	[SerializeField] private GameObject leaderboard;
+	[SerializeField] private GameObject settings;
+	[SerializeField] private GameObject howToPlay;
 
-	private VisualElement rootMainMenu;
-	private VisualElement rootLeaderboard;
+	private VisualElement _rootMainMenu;
+	private VisualElement _rootLeaderboard;
+	private VisualElement _rootSettings;
+	private VisualElement _rootHowToPlay;
 
-    private Button _startBtn;
+	// Main menu Components
+	private Button _startBtn;	
 	private Button _leaderboardBtn;
+	private Button _settingsBtn;
+	private Button _howToPlayBtn;
+	private List<Button> _allMainMenuButtons = new List<Button>();
 
-	private List<Button> _menuButtons = new List<Button>();
+	// Leaderboard Components
+	private Button _leaderboardBackBtn;
+
+	// Settings Components
+	private Button _settingsBackBtn;
+
+	// How To Play Components
+	private Button _howToPlayBackBtn;
 
 	// Awake just means call the function on rendering
     private void Awake()
 	{
 		// Main Menu Screen
-		rootMainMenu = mainMenu.GetComponent<UIDocument>().rootVisualElement;
+		_rootMainMenu = mainMenu.GetComponent<UIDocument>().rootVisualElement;
 
-		_startBtn = rootMainMenu.Q("StartGameBtn") as Button;
+		_startBtn = _rootMainMenu.Q("StartGameBtn") as Button;
+		_leaderboardBtn = _rootMainMenu.Q("LeaderboardBtn") as Button;
+		_settingsBtn = _rootMainMenu.Q("SettingsBtn") as Button;
+		_howToPlayBtn = _rootMainMenu.Q("HowToPlayBtn") as Button;
+
 		_startBtn.RegisterCallback<ClickEvent>(OnStartGameClick);
-
-		_leaderboardBtn = rootMainMenu.Q("LeaderboardBtn") as Button;
 		_leaderboardBtn.RegisterCallback<ClickEvent>(OnLeaderboardClick);
+		_settingsBtn.RegisterCallback<ClickEvent>(OnSettingsClick);
+		_howToPlayBtn.RegisterCallback<ClickEvent>(OnHowToPlayClick);
 
-		_menuButtons = rootMainMenu.Query<Button>().ToList();
-		for (int i = 0; i < _menuButtons.Count; i++)
+		_allMainMenuButtons = _rootMainMenu.Query<Button>().ToList();
+		for (int i = 0; i < _allMainMenuButtons.Count; i++)
 		{
-			_menuButtons[i].RegisterCallback<ClickEvent>(OnAllButtonsClick);
+			_allMainMenuButtons[i].RegisterCallback<ClickEvent>(OnAllButtonsClick);
 		}
 
-		rootMainMenu.style.display = DisplayStyle.Flex;
+		_rootMainMenu.style.display = DisplayStyle.Flex;
 
 
 
 		// Leaderboard Screen
-		rootLeaderboard = leaderboard.GetComponent<UIDocument>().rootVisualElement;
-		rootLeaderboard.style.display = DisplayStyle.None;
+		_rootLeaderboard = leaderboard.GetComponent<UIDocument>().rootVisualElement;
+
+		_leaderboardBackBtn = _rootLeaderboard.Q("BackToMenuBtn") as Button;
+
+		_leaderboardBackBtn.RegisterCallback<ClickEvent>(OnBackClick);
+
+		_rootLeaderboard.style.display = DisplayStyle.None;
+
+
+
+		// Settings Screen
+		_rootSettings = settings.GetComponent<UIDocument>().rootVisualElement;
+
+		_settingsBackBtn = _rootSettings.Q("BackToMenuBtn") as Button;
+
+		_settingsBackBtn.RegisterCallback<ClickEvent>(OnBackClick);
+
+		_rootSettings.style.display = DisplayStyle.None;
+
+
+
+		// How To Play Screen
+		_rootHowToPlay = howToPlay.GetComponent<UIDocument>().rootVisualElement;
+
+		_howToPlayBackBtn = _rootHowToPlay.Q("BackToMenuBtn") as Button;
+
+		_howToPlayBackBtn.RegisterCallback<ClickEvent>(OnBackClick);
+
+		_rootHowToPlay.style.display = DisplayStyle.None;
 	}
 
 	// Good practice to unregestier events onDisable, dont forget this
@@ -49,16 +95,24 @@ public class MainMenuEvents : MonoBehaviour
 		_startBtn.UnregisterCallback<ClickEvent>(OnStartGameClick);
 		_leaderboardBtn.UnregisterCallback<ClickEvent>(OnLeaderboardClick);
 
-		for (int i = 0; i < _menuButtons.Count; i++)
+		for (int i = 0; i < _allMainMenuButtons.Count; i++)
 		{
-			_menuButtons[i].UnregisterCallback<ClickEvent>(OnAllButtonsClick);
+			_allMainMenuButtons[i].UnregisterCallback<ClickEvent>(OnAllButtonsClick);
 		}
+
+		_leaderboardBackBtn.UnregisterCallback<ClickEvent>(OnBackClick);
+
+		_settingsBackBtn.UnregisterCallback<ClickEvent>(OnBackClick);
+
+		_howToPlayBackBtn.UnregisterCallback<ClickEvent>(OnBackClick);
 	}
 
 	private void DisableAllScreens()
 	{
-		rootMainMenu.style.display = DisplayStyle.None;
-		rootLeaderboard.style.display = DisplayStyle.None;
+		_rootMainMenu.style.display = DisplayStyle.None;
+		_rootLeaderboard.style.display = DisplayStyle.None;
+		_rootSettings.style.display = DisplayStyle.None;
+		_rootHowToPlay.style.display = DisplayStyle.None;
 	}
 
 	private void OnStartGameClick(ClickEvent evt)
@@ -69,8 +123,29 @@ public class MainMenuEvents : MonoBehaviour
 	private void OnLeaderboardClick(ClickEvent evt)
 	{
 		DisableAllScreens();
-		rootLeaderboard.style.display = DisplayStyle.Flex;
+		_rootLeaderboard.style.display = DisplayStyle.Flex;
 		leaderboard.SetActive(true);
+	}
+
+	private void OnSettingsClick(ClickEvent evt)
+	{
+		DisableAllScreens();
+		_rootSettings.style.display = DisplayStyle.Flex;
+		settings.SetActive(true);
+	}
+
+	private void OnHowToPlayClick(ClickEvent evt)
+	{
+		DisableAllScreens();
+		_rootHowToPlay.style.display = DisplayStyle.Flex;
+		howToPlay.SetActive(true);
+	}
+
+	private void OnBackClick(ClickEvent evt)
+	{
+		DisableAllScreens();
+		_rootMainMenu.style.display = DisplayStyle.Flex;
+		mainMenu.SetActive(true);
 	}
 
 	private void OnAllButtonsClick(ClickEvent evt)
