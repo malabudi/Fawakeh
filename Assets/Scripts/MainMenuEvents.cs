@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MainMenuEvents : MonoBehaviour
@@ -117,7 +117,7 @@ public class MainMenuEvents : MonoBehaviour
 
 	private void OnStartGameClick(ClickEvent evt)
 	{
-		Debug.Log("Pressed Start");
+		SceneManager.LoadScene("GameScene");
 	}
 
 	private void OnLeaderboardClick(ClickEvent evt)
