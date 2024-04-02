@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class TouchManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private BoxCollider2D boundaries;
     [SerializeField] private Transform fruitThrowTransform;
+
+    public static bool IsDropping { get; set; }
 
     private PlayerInput playerInput;
 
@@ -65,6 +66,15 @@ public class TouchManager : MonoBehaviour
         }
     }
 
+    public void ChangeBoundary(float extraWidth)
+	{
+        leftBound = startingLeftBound;
+        rightBound = startingRightBound;
+
+        leftBound += ThrowFruitController.instance.fruitBounds.extents.x + extraWidth + 0.1f;
+        rightBound -= ThrowFruitController.instance.fruitBounds.extents.x + extraWidth;
+    }
+
     private void TouchStarted(InputAction.CallbackContext context)
     {
         isTouching = true;
@@ -74,13 +84,17 @@ public class TouchManager : MonoBehaviour
     // This method will handle dropping the fruit specifically
     private void TouchPerformed(InputAction.CallbackContext context)
 	{
-        isTouching = false;
-        Debug.Log("Touch released");
+        if (ThrowFruitController.instance.CanDrop)
+		{
+            isTouching = false;
+            IsDropping = true;
+        }
     }
 
     private void TouchCanceled(InputAction.CallbackContext context)
     {
         isTouching = false;
+        IsDropping = false;
     }
 
     private void UpdatePlayerPosition()

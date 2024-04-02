@@ -11,7 +11,7 @@
                     "id": "288a6894-74d5-45eb-9cdc-641281a47c1b",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.1)",
+                    "interactions": "SlowTap(duration=0.05)",
                     "initialStateCheck": true
                 },
                 {
@@ -20,7 +20,7 @@
                     "id": "d8a74fc7-90ae-43c0-a73c-36175db6a3d2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.1)",
+                    "interactions": "SlowTap(duration=0.05)",
                     "initialStateCheck": true
                 }
             ],
