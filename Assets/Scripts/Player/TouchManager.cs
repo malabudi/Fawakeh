@@ -71,7 +71,7 @@ public class TouchManager : MonoBehaviour
         leftBound = startingLeftBound;
         rightBound = startingRightBound;
 
-        leftBound += ThrowFruitController.instance.fruitBounds.extents.x + extraWidth;
+        leftBound += ThrowFruitController.instance.fruitBounds.extents.x + extraWidth + 0.1f;
         rightBound -= ThrowFruitController.instance.fruitBounds.extents.x + extraWidth;
     }
 
@@ -84,9 +84,11 @@ public class TouchManager : MonoBehaviour
     // This method will handle dropping the fruit specifically
     private void TouchPerformed(InputAction.CallbackContext context)
 	{
-        isTouching = false;
-        IsDropping = true;
-        Debug.Log("Touch released");
+        if (ThrowFruitController.instance.CanDrop)
+		{
+            isTouching = false;
+            IsDropping = true;
+        }
     }
 
     private void TouchCanceled(InputAction.CallbackContext context)

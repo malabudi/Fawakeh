@@ -32,16 +32,14 @@ public class FruitSelector : MonoBehaviour
 	// serialize fields
 	public GameObject PickRandomFruitToDrop()
 	{
-		// Uncomment the commented code once there is more fruit added to the game
 		//int randomIndex = Random.Range(0, HighestStartingIndex + 1);
 		int randomIndex = 0;
-		Debug.Log(NoPhsyicsFruit.Length);
 
 		if (randomIndex < NoPhsyicsFruit.Length)
 		{
+			// uncomment when theres more fruit
 			//GameObject randomFruit = NoPhsyicsFruit[randomIndex];
 			GameObject randomFruit = NoPhsyicsFruit[0];
-			Debug.Log(randomFruit);
 			return randomFruit;
 		}
 
@@ -50,11 +48,17 @@ public class FruitSelector : MonoBehaviour
 
 	public void PickNextFruit()
 	{
-		int randomIndex = Random.Range(0, HighestStartingIndex + 1);
+		//int randomIndex = Random.Range(0, HighestStartingIndex + 1);
+		int randomIndex = 0;
 
 		if (randomIndex < Fruits.Length)
 		{
-			GameObject nextFruit = NoPhsyicsFruit[randomIndex];
+			// Just like above, uncomment when theres more fruit
+			//GameObject nextFruit = NoPhsyicsFruit[randomIndex];
+			GameObject nextFruit = NoPhsyicsFruit[0];
+			NextFruit = nextFruit;
+
+			//nextFruitImage.sprite = fruitSprites[randomIndex];
 		}
 	}
 }

@@ -18,7 +18,7 @@ public class ThrowFruitController : MonoBehaviour
 
 	private const float EXTRA_WIDTH = 0.02f;
 
-	public bool CanThrow { get; set; } = true;
+	public bool CanDrop { get; set; } = true;
 
 	private void Awake()
 	{
@@ -46,7 +46,7 @@ public class ThrowFruitController : MonoBehaviour
 
 	private void Update()
 	{
-		if (CanThrow && TouchManager.IsDropping)
+		if (CanDrop && TouchManager.IsDropping)
 		{
 			SpriteIndex index = CurrentFruit.GetComponent<SpriteIndex>();
 			Quaternion rotation = CurrentFruit.transform.rotation;
@@ -55,11 +55,12 @@ public class ThrowFruitController : MonoBehaviour
 				FruitSelector.instance.Fruits[index.Index], 
 				CurrentFruit.transform.position, 
 				rotation);
+
 			fruitObject.transform.SetParent(parentAfterThrow);
 
 			Destroy(CurrentFruit);
 
-			CanThrow = false;
+			CanDrop = false;
 			TouchManager.IsDropping = false;
 		}
 	}
@@ -67,6 +68,9 @@ public class ThrowFruitController : MonoBehaviour
 	public void SpawnFruit(GameObject fruit)
 	{
 		GameObject fruitObject = Instantiate(fruit, fruitTransform);
+
+		fruitObject.transform.position = fruitTransform.position;
+
 		CurrentFruit = fruitObject;
 		circleCollider = CurrentFruit.GetComponent<CircleCollider2D>();
 		fruitBounds = circleCollider.bounds;
