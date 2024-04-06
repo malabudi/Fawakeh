@@ -27,19 +27,21 @@ public class FruitSelector : MonoBehaviour
 		}
 	}
 
+	private void Start()
+	{
+		PickNextFruit();
+	}
+
 	// This function will be where it randomly picks what fruit to drop next
 	// There may not have to be any additional coding needed if u already initialize the fruits array in the editor using the
 	// serialize fields
 	public GameObject PickRandomFruitToDrop()
 	{
-		//int randomIndex = Random.Range(0, HighestStartingIndex + 1);
-		int randomIndex = 0;
+		int randomIndex = Random.Range(0, HighestStartingIndex + 1);
 
 		if (randomIndex < NoPhsyicsFruit.Length)
 		{
-			// uncomment when theres more fruit
-			//GameObject randomFruit = NoPhsyicsFruit[randomIndex];
-			GameObject randomFruit = NoPhsyicsFruit[0];
+			GameObject randomFruit = NoPhsyicsFruit[randomIndex];
 			return randomFruit;
 		}
 
@@ -48,17 +50,14 @@ public class FruitSelector : MonoBehaviour
 
 	public void PickNextFruit()
 	{
-		//int randomIndex = Random.Range(0, HighestStartingIndex + 1);
-		int randomIndex = 0;
+		int randomIndex = Random.Range(0, HighestStartingIndex + 1);
 
 		if (randomIndex < Fruits.Length)
 		{
-			// Just like above, uncomment when theres more fruit
-			//GameObject nextFruit = NoPhsyicsFruit[randomIndex];
-			GameObject nextFruit = NoPhsyicsFruit[0];
+			GameObject nextFruit = NoPhsyicsFruit[randomIndex];
 			NextFruit = nextFruit;
 
-			//nextFruitImage.sprite = fruitSprites[randomIndex];
+			nextFruitImage.GetComponent<Image>().sprite = fruitSprites[randomIndex];
 		}
 	}
 }

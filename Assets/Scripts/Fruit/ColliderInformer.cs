@@ -14,8 +14,10 @@ public class ColliderInformer : MonoBehaviour
 		{
 			hasCollided = true;
 			ThrowFruitController.instance.CanDrop = true;
-			FruitSelector.instance.PickNextFruit();
 			ThrowFruitController.instance.SpawnFruit(FruitSelector.instance.NextFruit);
+			FruitSelector.instance.PickNextFruit();
+
+			// Reset Player Position
 
 			Destroy(this);
 		}
