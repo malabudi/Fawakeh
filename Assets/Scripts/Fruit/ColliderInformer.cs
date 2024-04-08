@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColliderInformer : MonoBehaviour
@@ -17,7 +15,7 @@ public class ColliderInformer : MonoBehaviour
 			ThrowFruitController.instance.SpawnFruit(FruitSelector.instance.NextFruit);
 			FruitSelector.instance.PickNextFruit();
 
-			// Reset Player Position
+			ThrowFruitController.instance.playerController.resetPosition();
 
 			Destroy(this);
 		}

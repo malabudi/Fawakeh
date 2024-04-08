@@ -9,7 +9,7 @@ public class ThrowFruitController : MonoBehaviour
 	[SerializeField] private Transform parentAfterThrow;
 	[SerializeField] private FruitSelector selector;
 	
-	private TouchManager playerController;
+	public TouchManager playerController;
 
 	private Rigidbody2D rb;
 	private CircleCollider2D circleCollider;

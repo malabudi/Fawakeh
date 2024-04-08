@@ -25,6 +25,8 @@ public class TouchManager : MonoBehaviour
     private float startingLeftBound;
     private float startingRightBound;
 
+    private Vector3 originalPosition;
+
     private void Awake()
     {
         // Initialize Input
@@ -42,6 +44,8 @@ public class TouchManager : MonoBehaviour
 
         startingLeftBound = leftBound;
         startingRightBound = rightBound;
+
+        originalPosition = player.transform.position;
     }
 
     private void OnEnable()
@@ -71,7 +75,7 @@ public class TouchManager : MonoBehaviour
         leftBound = startingLeftBound;
         rightBound = startingRightBound;
 
-        leftBound += ThrowFruitController.instance.fruitBounds.extents.x + extraWidth + 0.1f;
+        leftBound += ThrowFruitController.instance.fruitBounds.extents.x + extraWidth;
         rightBound -= ThrowFruitController.instance.fruitBounds.extents.x + extraWidth;
     }
 
@@ -113,5 +117,10 @@ public class TouchManager : MonoBehaviour
         worldPosition.y = player.transform.position.y;
 
         player.transform.position = worldPosition;
+    }
+
+    public void resetPosition()
+	{
+        player.transform.position = originalPosition;
     }
 }
