@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4361270085034160631}
   - component: {fileID: -697065726456048224}
   - component: {fileID: 6244879589751450600}
-  m_Layer: 0
+  - component: {fileID: 4948279748935167642}
+  m_Layer: 8
   m_Name: 10 - melon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2256522089354266338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.375, y: 0.375, z: 0.375}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,3 +191,16 @@ MonoBehaviour:
   FruitIndex: 9
   PointsWhenMerged: 55
   FruitMass: 1.05
+--- !u!114 &4948279748935167642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256522089354266338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5c00276aece640a632781ee48f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0

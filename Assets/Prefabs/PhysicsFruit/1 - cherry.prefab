@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: -7697012586839519016}
   - component: {fileID: 1740116616447652385}
   - component: {fileID: 7712295829016734515}
-  m_Layer: 0
+  - component: {fileID: 2961878050213730723}
+  m_Layer: 8
   m_Name: 1 - cherry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5596869686707075499}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,3 +191,16 @@ MonoBehaviour:
   FruitIndex: 0
   PointsWhenMerged: 1
   FruitMass: 1.5
+--- !u!114 &2961878050213730723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596869686707075499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5c00276aece640a632781ee48f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0

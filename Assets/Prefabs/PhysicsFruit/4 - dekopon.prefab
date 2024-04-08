@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: -4701415276535390156}
   - component: {fileID: 5391210658351400604}
   - component: {fileID: 560677302482281761}
-  m_Layer: 0
+  - component: {fileID: 3530275968650331239}
+  m_Layer: 8
   m_Name: 4 - dekopon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 112940715295302111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,3 +191,16 @@ MonoBehaviour:
   FruitIndex: 3
   PointsWhenMerged: 10
   FruitMass: 1.35
+--- !u!114 &3530275968650331239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112940715295302111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5c00276aece640a632781ee48f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0

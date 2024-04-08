@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: -3800045901078705119}
   - component: {fileID: -8305818186166052681}
   - component: {fileID: 4545436930907398877}
-  m_Layer: 0
+  - component: {fileID: 939250231006308727}
+  m_Layer: 8
   m_Name: 7 - pear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6734524539621231270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,3 +191,16 @@ MonoBehaviour:
   FruitIndex: 6
   PointsWhenMerged: 28
   FruitMass: 1.2
+--- !u!114 &939250231006308727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734524539621231270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5c00276aece640a632781ee48f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0

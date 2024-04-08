@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: -5063445901926512731}
   - component: {fileID: 7818569022702113351}
   - component: {fileID: -6978204022000121728}
-  m_Layer: 0
+  - component: {fileID: -4737465819205307748}
+  m_Layer: 8
   m_Name: 11 - watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1435984417530864237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.425, y: 0.425, z: 0.425}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,3 +191,16 @@ MonoBehaviour:
   FruitIndex: 10
   PointsWhenMerged: 66
   FruitMass: 1
+--- !u!114 &-4737465819205307748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435984417530864237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5c00276aece640a632781ee48f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
