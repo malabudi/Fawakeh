@@ -188,5 +188,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FruitIndex: 7
-  PointsWhenMerged: 1
+  PointsWhenMerged: 36
   FruitMass: 1.15

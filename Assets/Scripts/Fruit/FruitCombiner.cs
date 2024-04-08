@@ -29,6 +29,8 @@ public class FruitCombiner : MonoBehaviour
 
 					if (thisID > otherID)
 					{
+						GameManager.instance.IncreaseScore(info.PointsWhenMerged);
+
 						// if two watermelons merge, make them dissappear
 						if (_info.FruitIndex == FruitSelector.instance.Fruits.Length - 1)
 						{
