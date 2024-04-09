@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private Image gameStartPanel;
 	[SerializeField] private Image gameOverPanel;
-	[SerializeField] private float fadeTimeBegin = 0.5f;
+	[SerializeField] private float fadeTimeBegin = 0.25f;
 	[SerializeField] private float fadeTimeEnd = 2f;
 
 	public float timeUntilGameOver = 1.5f;
