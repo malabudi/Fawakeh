@@ -70,7 +70,7 @@ public class ThrowFruitController : MonoBehaviour
 		GameObject fruitObject = Instantiate(fruit, fruitTransform);
 
 		// Z is 10 to put fruits behind game over fade screen
-		fruitObject.transform.position = new Vector3(fruitTransform.position.x, fruitTransform.position.y, 10);
+		fruitObject.transform.position = new Vector3(fruitTransform.position.x, fruitTransform.position.y, 200f);
 
 		CurrentFruit = fruitObject;
 		circleCollider = CurrentFruit.GetComponent<CircleCollider2D>();

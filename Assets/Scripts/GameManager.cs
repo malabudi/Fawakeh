@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
 	public int CurrentScore { get; set; }
 
 	[SerializeField] private TextMeshProUGUI scoreText;
+	[SerializeField] private Image gameStartPanel;
 	[SerializeField] private Image gameOverPanel;
-	[SerializeField] private float fadeTime = 2f;
+	[SerializeField] private float fadeTimeBegin = 0.5f;
+	[SerializeField] private float fadeTimeEnd = 2f;
 
 	public float timeUntilGameOver = 1.5f;
 
@@ -57,11 +59,11 @@ public class GameManager : MonoBehaviour
 
 		float elapsedTime = 0f;
 
-		while (elapsedTime < fadeTime)
+		while (elapsedTime < fadeTimeEnd)
 		{
 			elapsedTime += Time.deltaTime;
 
-			float newAlpha = Mathf.Lerp(0f, 1f, (elapsedTime / fadeTime));
+			float newAlpha = Mathf.Lerp(0f, 1f, (elapsedTime / fadeTimeEnd));
 			startColor.a = newAlpha;
 			gameOverPanel.color = startColor;
 
@@ -78,23 +80,23 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator FadeGameIn()
 	{
-		gameOverPanel.gameObject.SetActive(true);
-		Color startColor = gameOverPanel.color;
+		gameStartPanel.gameObject.SetActive(true);
+		Color startColor = gameStartPanel.color;
 		startColor.a = 1f;
-		gameOverPanel.color = startColor;
+		gameStartPanel.color = startColor;
 
 		float elapsedTime = 0f;
 
-		while (elapsedTime < fadeTime)
+		while (elapsedTime < fadeTimeBegin)
 		{
 			elapsedTime += Time.deltaTime;
-			float newAlpha = Mathf.Lerp(1f, 0f, (elapsedTime / fadeTime));
+			float newAlpha = Mathf.Lerp(1f, 0f, (elapsedTime / fadeTimeBegin));
 			startColor.a = newAlpha;
-			gameOverPanel.color = startColor;
+			gameStartPanel.color = startColor;
 
 			yield return null;
 		}
 
-		gameOverPanel.gameObject.SetActive(false);
+		gameStartPanel.gameObject.SetActive(false);
 	}
 }
