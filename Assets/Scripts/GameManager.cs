@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +49,42 @@ public class GameManager : MonoBehaviour
 	public void GameOver()
 	{
 		StartCoroutine(ResetGame());
+		StartCoroutine(UpdateHighScore());
+	}
+
+	private IEnumerator UpdateHighScore()
+	{
+		string userID;
+
+		// Check if the unique ID exists in PlayerPrefs (singleton)
+		if (PlayerPrefs.HasKey("UserID"))
+		{
+			// Retrieve the unique ID
+			userID = PlayerPrefs.GetString("UserID");
+		}
+		else
+		{
+			// Generate a new unique ID and save to player prefs
+			userID = Guid.NewGuid().ToString();
+			PlayerPrefs.SetString("UserID", userID);
+		}
+
+		// Use userID as the primary key to send a post request and update leaderboard (example code for now)
+		using (UnityWebRequest www = UnityWebRequest.Post("https://www.my-server.com/myapi", 
+			"{ \"field1\": 1, \"field2\": 2 }", 
+			"application/json"))
+		{
+			yield return www.SendWebRequest();
+
+			if (www.result != UnityWebRequest.Result.Success)
+			{
+				Debug.LogError(www.error);
+			}
+			else
+			{
+				Debug.Log("Form upload complete!");
+			}
+		}
 	}
 
 	private IEnumerator ResetGame()
