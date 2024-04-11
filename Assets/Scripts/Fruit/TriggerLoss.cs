@@ -8,19 +8,15 @@ public class NewBehaviourScript : MonoBehaviour
 
 	public void OnTriggerStay2D(Collider2D collision)
 	{
-        GameManager.instance.GameOver();
+        if (collision.gameObject.layer == 7)
+        {
+            timer += Time.deltaTime;
 
-        /*
-         if (collision.gameObject.layer == 7)
-         {
-              timer += Time.deltaTime;
-
-              if (timer > GameManager.instance.timeUntilGameOver)
-              {
-                   GameManager.instance.GameOver();
-              }
-         }
-        */
+            if (timer > GameManager.instance.timeUntilGameOver)
+            {
+                GameManager.instance.GameOver();
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

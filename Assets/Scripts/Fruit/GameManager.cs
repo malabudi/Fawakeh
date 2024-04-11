@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
-using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour
 {
@@ -81,10 +78,9 @@ public class GameManager : MonoBehaviour
 		// Update the player score before changing the scene
 		ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
         scoreManager.UpdatePlayerScore(PlayerInformation.Instance.userID, CurrentScore);
+		isResetting = false; // Reset the flag in case of returning to this scene
 
-        SceneManager.LoadScene("MenuScene");
-
-        isResetting = false; // Reset the flag in case of returning to this scene
+		SceneManager.LoadScene("MenuScene");
     }
 
 
