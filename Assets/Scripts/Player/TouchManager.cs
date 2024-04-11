@@ -92,6 +92,7 @@ public class TouchManager : MonoBehaviour
 		{
             isTouching = false;
             IsDropping = true;
+            AudioManager.Instance.PlayAudio("drop", 1f);
         }
     }
 

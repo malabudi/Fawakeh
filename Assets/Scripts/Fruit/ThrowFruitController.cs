@@ -11,7 +11,6 @@ public class ThrowFruitController : MonoBehaviour
 	
 	public TouchManager playerController;
 
-	private Rigidbody2D rb;
 	private CircleCollider2D circleCollider;
 
 	public Bounds fruitBounds { get; private set; }
