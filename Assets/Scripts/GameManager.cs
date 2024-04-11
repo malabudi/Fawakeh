@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
 {
 	// Game manager must use the singleton pattern
     public static GameManager instance;
+    private bool isResetting = false;
 
-	public int CurrentScore { get; set; }
+    public int CurrentScore { get; set; }
 
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private Image gameStartPanel;
@@ -20,7 +21,11 @@ public class GameManager : MonoBehaviour
 
 	public float timeUntilGameOver = 1.5f;
 
-	private void OnEnable()
+    // Example ID and score
+    private string playerId = "65fca0a60f2500503b805f11";
+    private int playerScore = 68;
+
+    private void OnEnable()
 	{
 		SceneManager.sceneLoaded += FadeGame;
 	}
@@ -44,36 +49,48 @@ public class GameManager : MonoBehaviour
 		scoreText.text = CurrentScore.ToString("0");
 	}
 
-	public void GameOver()
-	{
-		StartCoroutine(ResetGame());
-	}
+    public void GameOver()
+    {
+        StartCoroutine(ResetGame());
+    }
 
-	private IEnumerator ResetGame()
-	{
-		gameOverPanel.gameObject.SetActive(true);
 
-		Color startColor = gameOverPanel.color;
-		startColor.a = 0f;
-		gameOverPanel.color = startColor;
 
-		float elapsedTime = 0f;
+    private IEnumerator ResetGame()
+    {
+        if (isResetting) yield break; // Prevent multiple calls
+        isResetting = true;
 
-		while (elapsedTime < fadeTimeEnd)
-		{
-			elapsedTime += Time.deltaTime;
+        gameOverPanel.gameObject.SetActive(true);
 
-			float newAlpha = Mathf.Lerp(0f, 1f, (elapsedTime / fadeTimeEnd));
-			startColor.a = newAlpha;
-			gameOverPanel.color = startColor;
+        Color startColor = gameOverPanel.color;
+        startColor.a = 0f;
+        gameOverPanel.color = startColor;
 
-			yield return null;
-		}
+        float elapsedTime = 0f;
 
-		SceneManager.LoadScene("MenuScene");
-	}
+        while (elapsedTime < fadeTimeEnd)
+        {
+            elapsedTime += Time.deltaTime;
 
-	private void FadeGame(Scene scene, LoadSceneMode mode)
+            float newAlpha = Mathf.Lerp(0f, 1f, (elapsedTime / fadeTimeEnd));
+            startColor.a = newAlpha;
+            gameOverPanel.color = startColor;
+
+            yield return null;
+        }
+
+        // Update the player score before changing the scene
+        ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
+        scoreManager.UpdatePlayerScore(playerId, playerScore);
+
+        SceneManager.LoadScene("MenuScene");
+
+        isResetting = false; // Reset the flag in case of returning to this scene
+    }
+
+
+    private void FadeGame(Scene scene, LoadSceneMode mode)
 	{
 		StartCoroutine(FadeGameIn());
 	}
