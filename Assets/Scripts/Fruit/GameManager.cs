@@ -23,10 +23,6 @@ public class GameManager : MonoBehaviour
 
 	public float timeUntilGameOver = 1.5f;
 
-    // Example ID and score
-    private string playerId = "65fca0a60f2500503b805f11";
-    private int playerScore = 68;
-
     private void OnEnable()
 	{
 		SceneManager.sceneLoaded += FadeGame;
@@ -56,47 +52,9 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(ResetGame());
 	}
 
-	/*
-	private IEnumerator UpdateHighScore()
-	{
-		string userID;
-
-		// Check if the unique ID exists in PlayerPrefs (singleton)
-		if (PlayerPrefs.HasKey("UserID"))
-		{
-			// Retrieve the unique ID
-			userID = PlayerPrefs.GetString("UserID");
-		}
-		else
-		{
-			// Generate a new unique ID and save to player prefs
-			userID = Guid.NewGuid().ToString();
-			PlayerPrefs.SetString("UserID", userID);
-		}
-
-		// Use userID as the primary key to send a post request and update leaderboard (example code for now)
-		using (UnityWebRequest www = UnityWebRequest.Post("https://www.my-server.com/myapi", 
-			"{ \"field1\": 1, \"field2\": 2 }", 
-			"application/json"))
-		{
-			yield return www.SendWebRequest();
-
-			if (www.result != UnityWebRequest.Result.Success)
-			{
-				Debug.LogError(www.error);
-			}
-			else
-			{
-				Debug.Log("Form upload complete!");
-			}
-		}
-	}*/
-
-
-
     private IEnumerator ResetGame()
     {
-        if (isResetting) yield break; // Prevent multiple calls
+		if (isResetting) yield break; // Prevent multiple calls
         isResetting = true;
 
         gameOverPanel.gameObject.SetActive(true);
@@ -118,9 +76,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        // Update the player score before changing the scene
-        ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
-        scoreManager.UpdatePlayerScore(playerId, playerScore);
+		
+
+		// Update the player score before changing the scene
+		ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
+        scoreManager.UpdatePlayerScore(PlayerInformation.Instance.userID, CurrentScore);
 
         SceneManager.LoadScene("MenuScene");
 

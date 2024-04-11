@@ -11,11 +11,8 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator SendScoreUpdate(string playerId, int score)
     {
-
         string url = $"http://localhost:5000/update/{playerId}";
-        //string jsonData = JsonUtility.ToJson(new { score = 65 });
-        string jsonData = "Hisham";
-        jsonData = "{ \"score\": 65 }";
+        string jsonData = JsonUtility.ToJson(new { score = 65 });
 
         Debug.Log("Sending JSON: " + jsonData); // Log the JSON being sent
         using (UnityWebRequest request = new UnityWebRequest(url, "PUT"))
