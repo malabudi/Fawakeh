@@ -12,14 +12,14 @@ public class ScoreManager : MonoBehaviour
     private IEnumerator SendScoreUpdate(string playerId, int score)
     {
         string url = $"http://localhost:5000/update/{playerId}";
-        string jsonData = JsonUtility.ToJson(new { score = 65 });
+        string jsonData = $"{{ \"score\": {score} }}";
 
         Debug.Log("Sending JSON: " + jsonData); // Log the JSON being sent
         using (UnityWebRequest request = new UnityWebRequest(url, "PUT"))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
             yield return request.SendWebRequest();

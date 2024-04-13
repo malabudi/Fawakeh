@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ResetGame()
     {
-		if (isResetting) yield break; // Prevent multiple calls
+		if (isResetting) yield break; // Prevent multiple API calls
         isResetting = true;
 
         gameOverPanel.gameObject.SetActive(true);
@@ -73,12 +73,12 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-		
-
 		// Update the player score before changing the scene
 		ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
         scoreManager.UpdatePlayerScore(PlayerInformation.Instance.userID, CurrentScore);
-		isResetting = false; // Reset the flag in case of returning to this scene
+
+		// Reset the flag in case of returning to this scene
+		isResetting = false;
 
 		SceneManager.LoadScene("MenuScene");
     }
