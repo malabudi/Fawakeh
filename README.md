@@ -52,7 +52,7 @@ pip install --upgrade setuptools
 
 pytest 
 
-##Checking Coverage
+## Checking Coverage
 The output from pytest will include a coverage report. If you want a more detailed HTML report, you can generate one with:
 `pytest --cov=myapp --cov-report html unitTests.py ` (make sure your in the app folder)
 
