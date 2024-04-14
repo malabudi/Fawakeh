@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool isResetting = false;
 
-    public int CurrentScore { get; set; }
+    public int CurrentScore { get; set; } = 0;
 
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private Image gameStartPanel;
